@@ -1,0 +1,32 @@
+local_delivery:
+  debug_print = "T: maildir_home for $local_part@$domain"
+  driver = appendfile
+  .ifdef MAILDIR_HOME_MAILDIR_LOCATION
+  directory = MAILDIR_HOME_MAILDIR_LOCATION
+  .else
+  directory = $home/Maildir
+  .endif
+  .ifdef MAILDIR_HOME_CREATE_DIRECTORY
+  create_directory
+  .endif
+  .ifdef MAILDIR_HOME_CREATE_FILE
+  create_file = MAILDIR_HOME_CREATE_FILE
+  .endif
+  delivery_date_add
+  envelope_to_add
+  return_path_add
+  maildir_format
+  .ifdef MAILDIR_HOME_DIRECTORY_MODE
+  directory_mode = MAILDIR_HOME_DIRECTORY_MODE
+  .else
+  directory_mode = 0700
+  .endif
+  .ifdef MAILDIR_HOME_MODE
+  mode = MAILDIR_HOME_MODE
+  .else
+  mode = 0600
+  .endif
+  mode_fail_narrower = false
+  user = vmail
+  group = vmail
+
