@@ -16,5 +16,9 @@ if [ -d /data/certs/archive ]; then
 	chmod 755 /data/certs/archive
 fi
 
+if [ -f /etc/exim/conf.d/hubbed_hosts ]; then
+	cp /etc/exim/conf.d/hubbed_hosts /etc/exim/hubbed_hosts
+fi
+
 exim -bd -q5m
 tail -f /data/logs/mainlog 
