@@ -1,7 +1,6 @@
 #!/bin/sh
 
 touch /data/logs/mainlog /data/logs/rejectlog /data/logs/paniclog ; chown exim:exim /data/logs/mainlog /data/logs/rejectlog /data/logs/paniclog
-touch /data/logs/procmailrc.log && chown vmail:vmail /data/logs/procmailrc.log && chmod 640 /data/logs/procmailrc.log
 
 if [ -f /servername_cert ]; then
   servername_cert="$(grep "^[[:alnum:]]" /servername_cert|head -n1|tr -d " ")"
