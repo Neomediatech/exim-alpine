@@ -20,5 +20,16 @@ if [ -f /etc/exim/conf.d/hubbed_hosts ]; then
 	cp /etc/exim/conf.d/hubbed_hosts /etc/exim/hubbed_hosts
 fi
 
-exim -bd -q5m
+if [ -n "$WAITFOR" ]; then
+	for SERVICE in $WAITFOR; do
+		echo -n "Waiting for $SERVICE..."
+		until ping $SERVICE -c1 >/dev/null; do
+			sleep 1
+			echo -n "..."
+		done
+		echo "OK";
+	done
+fi
+
+exec exim -bd -q5m
 tail -f /data/logs/mainlog 
