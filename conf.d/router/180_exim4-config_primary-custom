@@ -21,6 +21,40 @@ aliases:
   directory_transport = SYSTEM_ALIASES_DIRECTORY_TRANSPORT
   .endif
 
+# custom rules: place a ".forward" file in user home dir
+# and use Exim filter syntax (https://www.exim.org/exim-html-current/doc/html/spec_html/filter_ch-exim_filter_files.html)
+forwards:                                
+  debug_print = "R: userforward for $local_part@$domain"
+  driver = redirect                                                            
+  domains = +local_domains           
+  check_local_user = false 
+  user = vmail             
+  file = /data/home/${local_part}/.forward
+  require_files = /data/home/${local_part}/.forward
+  no_verify                                             
+  no_expn                                                                      
+  check_ancestor                     
+  allow_filter            
+  forbid_smtp_code = true
+  directory_transport = address_directory 
+  file_transport = address_file                    
+  pipe_transport = address_pipe                         
+  reply_transport = address_reply
+  router_home_directory = /data/home/${local_part}/Maildir
+  skip_syntax_errors      
+  syntax_errors_to = postmaster
+  syntax_errors_text = \                  
+    This is an automatically generated message. An error has\n\
+    been found in your .forward file. Details of the error are\n\
+    reported below. While this error persists, you will receive\n\
+    a copy of this message for every message that is addressed\n\
+    to you. If your .forward file is a filter file, or if it is\n\
+    a non-filter file containing no valid forwarding addresses,\n\
+    a copy of each incoming message will be put in your normal\n\
+    mailbox. If a non-filter file contains at least one valid\n\
+    forwarding address, forwarding to the valid addresses will\n\
+    happen, and those will be the only deliveries that occur.     
+
 # local delivery
 local_user:
   debug_print = "R: local_user for $local_part@$domain"
