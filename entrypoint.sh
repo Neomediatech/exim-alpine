@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 touch /data/logs/mainlog /data/logs/rejectlog /data/logs/paniclog ; chown exim:exim /data/logs/mainlog /data/logs/rejectlog /data/logs/paniclog
 
