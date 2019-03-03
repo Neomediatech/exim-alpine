@@ -13,9 +13,10 @@ RUN apk add --no-cache tini exim exim-cdb exim-dbmdb exim-dnsdb exim-scripts exi
 
 COPY conf/* /etc/exim/
 COPY conf.d /etc/exim/conf.d
-COPY init.sh /
-RUN chmod +x /init.sh
+COPY entrypoint.sh /
+RUN chmod +x /entrypoint.sh
 
 EXPOSE 25 465 587
 
-ENTRYPOINT ["tini", "--", "/init.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["tini","--","exim","-bd","-q5m"]
