@@ -19,7 +19,7 @@ RUN chmod +x /entrypoint.sh
 EXPOSE 25 465 587
 
 # ToDO: more useful check, like a whole transaction
-HEALTHCHECK --interval=30s --timeout=30s --start-period=10s --retries=20 CMD-SHELL nc -w 7 -zv 0.0.0.0 25
+HEALTHCHECK --interval=30s --timeout=30s --start-period=10s --retries=20 CMD nc -w 7 -zv 0.0.0.0 25
       
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["tini","--","exim","-bd","-q5m"]
