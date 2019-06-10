@@ -2,7 +2,5 @@
 Dockerized version of Exim, based on Alpine
 
 ## Important
-This image must be run on a public ip address or with a `host` mode network. This way you ca see the real ip address coming from outside and all checks to fight spammer will be useful. Ignoring this you end up with an open relay system or overwhelmed by tons of spam. You're be warned.
+This image must be run on a public ip address or with a `host` mode network. This way you can see the real ip address coming from outside, and all checks to fight spammer will be useful. Ignoring this you end up with an open relay system or overwhelmed by tons of spam. You're be warned.
 
-## Warn
-Work in progress, there's something that not works here (28 feb 2019)
