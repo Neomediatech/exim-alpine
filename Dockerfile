@@ -1,8 +1,12 @@
 FROM alpine:3.9
 
-LABEL maintainer="docker-dario@neomediatech.it"
-
 ENV EXIM_VERSION=4.92-r0
+
+LABEL maintainer="docker-dario@neomediatech.it" \ 
+      org.label-schema.version=$EXIM__VERSION \
+      org.label-schema.vcs-type=Git \
+      org.label-schema.vcs-url=https://github.com/Neomediatech/exim-alpine \
+      org.label-schema.maintainer=Neomediatech
 
 RUN apk update; apk upgrade ; apk add --no-cache tzdata; cp /usr/share/zoneinfo/Europe/Rome /etc/localtime
 RUN apk add --no-cache tini exim exim-cdb exim-dbmdb exim-dnsdb exim-scripts exim-utils bash redis procmail \
