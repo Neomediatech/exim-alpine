@@ -1,5 +1,6 @@
 #!/bin/bash
 
+mkdir -p /data/logs/
 touch /data/logs/mainlog /data/logs/rejectlog /data/logs/paniclog ; chown exim:exim /data/logs/mainlog /data/logs/rejectlog /data/logs/paniclog
 
 if [ -f /servername_cert ]; then
