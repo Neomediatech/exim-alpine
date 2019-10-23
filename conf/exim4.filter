@@ -1,0 +1,14 @@
+#   Exim filter   <<== do not edit or remove this line!
+
+if first_delivery then
+
+  if
+     $acl_m_spamflag contains "1" and
+     "${if def:h_X-SPAM-Subject: {1}{0}}" is 1
+  then
+       headers remove Subject
+       headers add "Subject: $rh_X-SPAM-Subject:"
+       headers remove X-SPAM-Subject
+  endif
+
+endif
