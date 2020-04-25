@@ -1,6 +1,6 @@
-FROM alpine:3.10
+FROM alpine:3.11
 
-ENV EXIM_VERSION=4.92.2-r1
+ENV EXIM_VERSION=4.93-r0
 
 LABEL maintainer="docker-dario@neomediatech.it" \ 
       org.label-schema.version=$EXIM_VERSION \
