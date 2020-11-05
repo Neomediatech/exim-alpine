@@ -29,6 +29,7 @@ if [ -x "$cmd" ]; then
       checks="$checks -wait $CHECK"
     done
     $cmd $checks -timeout 180s -wait-retry-interval 15s
+    [ $? -ne 0 ] && exit 1
   fi
 fi
 
