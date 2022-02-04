@@ -1,5 +1,3 @@
-[![](https://images.microbadger.com/badges/version/neomediatech/exim-alpine.svg)](https://microbadger.com/images/neomediatech/exim-alpine)
-[![](https://images.microbadger.com/badges/image/neomediatech/exim-alpine.svg)](https://microbadger.com/images/neomediatech/exim-alpine)
 ![](https://img.shields.io/github/last-commit/Neomediatech/exim-alpine.svg?style=plastic)
 ![](https://img.shields.io/github/repo-size/Neomediatech/exim-alpine.svg?style=plastic)
 
